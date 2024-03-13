@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <main>
+        <section>
+            <div class="container pt-5">
+                <h1 id="title" class="text-center text-info">To Do List</h1>
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <div class="mb-3">
+                                  <label for="taskName" class="form-label">Task Nane</label>
+                                  <input type="text" class="form-control" id="taskName" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="description" class="form-label">Description</label>
+                                  <input type="text" class="form-control" id="description">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input type="text" class="form-control" id="image">
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary col-3">Submit</button>
+                                </div>
+                              </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main> -->
+
+
+    <main>
+        <section id="mainList">
+            <div class="container pt-5">
+                <div class="row w-100 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-5 col-md-8">
+                                    <h1 id="title" class="text-info">Your To Do List</h1>
+                                </div>
+                                <div class="col-7 col-md-4 text-end">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <span data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-custom-class="Add-tooltip"
+                                                data-bs-title="Delete All task from here">
+                                                <button type="button" class="btn btn-danger" id="deleteAllBtn">
+                                                    Del All <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                        <div class="col-4">
+                                            <span data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-custom-class="Add-tooltip" data-bs-title="Add task from here">
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#staticBackdrop">
+                                                    <i class="fa-solid fa-plus"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                            <hr>
+                            <div class="table-responsive">
+                                <table>
+
+
+                                    <table class="table table-hover ">
+                                        <thead class="table-secondary ">
+                                            <tr class="">
+                                                <th class="th-left col-1" scope="col">No.</th>
+                                                <th class="col-3" scope="col">Task Name</th>
+                                                <th class="col-4" scope="col">Description</th>
+                                                <th class="th-right col-3" scope="col">Image</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <div id="tableData">
+
+                                    </div>
+                                    <!-- <table class="table table-hover">
+                                        <tbody class="">
+                                            <tr class="">
+                                                <th class="th-left col-1" scope="col">No.</th>
+                                                <th class="col-3" scope="col">Task Name</th>
+                                                <th class="col-4 text-truncate" style="max-width: 100px;" scope="col">Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat modi quis rerum? Nihil voluptas dignissimos, ullam autem ratione aliquam esse pariatur distinctio quam nam consequuntur laborum illum. Hic, expedita ut?</th>
+                                                <th class="th-right col-3" scope="col">
+                                                    <img  src="data:image/jpeg;base64,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" alt="">
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table> -->
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+  </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Task</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card border border-0 ">
+                        <div class="card-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="taskName" class="form-label">Task Nane</label>
+                                    <input type="text" class="form-control" id="taskName" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="description">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input type="text" class="form-control" id="image">
+                                </div>
+                                <!-- <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary col-3">Submit</button>
+                        </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="addBtn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal showOne -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content" id="model2-content">
+                
+            </div>
+        </div>
+    </div>
+    <!-- Modal edit -->
+    <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Task</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card border border-0 ">
+                        <div class="card-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="taskName" class="form-label">Task Nane</label>
+                                    <input type="text" class="form-control" id="taskName-update" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <input type="text" class="form-control" id="description-update">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input type="text" class="form-control" id="image-update">
+                                </div>
+                                <!-- <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary col-3">Submit</button>
+                        </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" id="updateBtn">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>

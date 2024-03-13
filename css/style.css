@@ -1,0 +1,70 @@
+:root{
+    --card-bg: rgb(224, 245, 255);
+    --body-bg: #ffffff;
+}
+body{
+    background-color: var(--body-bg);
+}
+#mainList .card{
+    background-color: var(--card-bg);
+    border-radius: 12px;
+}
+.modal-body .card{
+    background-color: var(--card-bg);
+    border-radius: 8px;
+}
+.Add-tooltip {
+    --bs-tooltip-bg: var(--bs-dark);
+    --bs-tooltip-color: var(--bs-white);
+}
+/* .table-group-divider{
+    border-top: calc(var(--bs-border-width)* 2) solid rgb(194, 194, 194);
+} */
+.table tbody, td, tfoot, th, thead, tr{
+    border: 0;
+}
+.table .th-left{
+   border-radius: 8px 0px 0px 8px;
+}
+.table .th-right{
+    border-radius: 0px 8px 8px 0px;
+}
+.table-responsive{
+    overflow-y: auto;
+    max-height: 400px;
+}
+.table img{
+    width: 150px;
+    border-radius: 6px;
+}
+@media (max-width: 400px){
+    .table img{
+        width:  60px;
+    }  
+}
+@media (max-width: 500px){
+    .table img{
+        width:  90px;
+    }  
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #adadad;
+    border-radius: 4px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
