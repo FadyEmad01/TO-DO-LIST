@@ -65,8 +65,6 @@ function show() {
 
 show();
 
-
-
 //////clear-input////////
 function clearInput() {
   taskName.value = "";
@@ -135,19 +133,16 @@ function deleteOne(i) {
 
 // function edit(i){
 
-
 //   show();
 // }
 
 // updateBtn.addEventListener('click' , edit);
 
-
-
 function updateOne(i) {
   taskNameUpdate.value = LocalTaskSave[i].name;
   descriptionUpdate.value = LocalTaskSave[i].description;
   imageUpdate.value = LocalTaskSave[i].img;
-  
+
   // Define a new function within updateOne to capture the value of i
   function updateTask() {
     LocalTaskSave[i].name = taskNameUpdate.value;
@@ -155,8 +150,9 @@ function updateOne(i) {
     LocalTaskSave[i].img = imageUpdate.value;
     localStorage.setItem("allTasks", JSON.stringify(LocalTaskSave));
     show();
+    location.reload();
   }
-  
+
   // Add event listener to call the updateTask function
-  updateBtn.addEventListener('click' , updateTask);
+  updateBtn.addEventListener("click", updateTask);
 }
